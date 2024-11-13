@@ -8,23 +8,24 @@ spec:
   buildpacks:
     builder: tanzu-build-public.packages.broadcom.com/builders/builder-jammy-base:0.1.2@sha256:2370d9e499afb6e0b2fb0d3c4533d733a47f771eb0a115c4f9aa75cd081ee072
   postbuildsteps:
-  - namedtask: tanzu-spring-boot
-  # - name: add-env
-  #   containertask:
-  #     image: tomkennedy73/container-app-modifier
-  #     args: ["some-env-name=some-env-value"]
+    - namedtask: tanzu-containerapp-defaults
+    - namedtask: tanzu-spring-boot
+    # - name: add-env
+    #   containertask:
+    #     image: tomkennedy73/container-app-modifier
+    #     args: ["some-env-name=some-env-value"
   runtimes:
-  - name: kubernetes-carvel-package
-    description: create a carvel package for deploying on kubernetes
-    steps:
-    - namedtask: tanzu-kubernetes-deployment
-    - namedtask: tanzu-kubernetes-carvel-package
-  - name: kubernetes-plain
-    description: create kubernetes yaml files for deploying on kubernetes
-    steps:
-    - namedtask: tanzu-kubernetes-deployment
-  - name: container-image
-    description: write image to file for use with container runtime (i.e docker run)
-    steps:
-    - namedtask: tanzu-container-image
+    - name: kubernetes-carvel-package
+      description: create a carvel package for deploying on kubernetes
+      steps:
+        - namedtask: tanzu-kubernetes-deployment
+        - namedtask: tanzu-kubernetes-carvel-package
+    - name: kubernetes-plain
+      description: create kubernetes yaml files for deploying on kubernetes
+      steps:
+        - namedtask: tanzu-kubernetes-deployment
+    - name: container-image
+      description: write image to file for use with container runtime (i.e docker run)
+      steps:
+        - namedtask: tanzu-container-image
 
