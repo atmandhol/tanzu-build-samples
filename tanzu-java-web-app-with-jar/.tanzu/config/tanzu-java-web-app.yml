@@ -2,7 +2,7 @@ apiVersion: apps.tanzu.vmware.com/v1
 kind: ContainerApp
 metadata:
   creationTimestamp: null
-  name: tanzu-java-web-app
+  name: tanzu-java-web-app-with-jar
 spec:
   build:
     buildpacks: {}
