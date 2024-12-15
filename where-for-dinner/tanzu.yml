@@ -1,3 +1,4 @@
+#! this file is awesome
 apiVersion: config.tanzu.vmware.com/v1
 configuration:
   dev:
